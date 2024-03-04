@@ -1,7 +1,7 @@
 FROM node:16-alpine 
 WORKDIR /app
 
-COPY react .
+COPY nextjs .
 
 RUN npm ci 
 RUN npm run build
