@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  database:
+    container_name: database
+    image: mysql:8
+    env_file:
+      - ./docker/mysql.env
+    ports:
+      - 3306:3306
+    networks:
+      - spring_net
+    volumes:
+      - ./mysql/data.sql:/docker-entrypoint-initdb.d/data.sql
+    healthcheck:
+      test: mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} ping
+
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: ./docker/spring.dockerfile
+    volumes:
+      - ./spring/:/usr/src/app/
+    ports:
+      - 8080:8080
+    networks:
+      - spring_net
+    depends_on:
+      database:
+        condition: service_healthy
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./docker/react.dockerfile
+    ports:
+      - 3000:3000
+    networks:
+      - react_net
+
+networks:
+  spring_net:
+  react_net:
