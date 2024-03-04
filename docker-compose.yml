@@ -33,12 +33,12 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: ./docker/react.dockerfile
+      dockerfile: ./docker/nextjs.dockerfile
     ports:
       - 3000:3000
     networks:
-      - react_net
+      - nextjs_net
 
 networks:
   spring_net:
-  react_net:
+  nextjs_net:
