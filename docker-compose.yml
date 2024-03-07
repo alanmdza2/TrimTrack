@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: ./docker/spring.dockerfile
     volumes:
-      - ./spring/:/usr/src/app/
+      - ./spring/:/app/src
     ports:
       - 8080:8080
     networks:
