@@ -40,6 +40,9 @@ services:
       dockerfile: ./docker/nextjs.dockerfile
     ports:
       - 3000:3000
+    volumes:
+      - ./nextjs/:/usr/src/app/
+      - /usr/src/app/node_modules/
     networks:
       - nextjs_net
     command: npm run dev
