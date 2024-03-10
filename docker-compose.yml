@@ -17,6 +17,7 @@ services:
 
   backend:
     container_name: backend
+    image: backend
     build:
       context: .
       dockerfile: ./docker/spring.dockerfile
@@ -26,11 +27,14 @@ services:
       - 8080:8080
     networks:
       - spring_net
+      - nextjs_net
     depends_on:
       database:
         condition: service_healthy
 
   frontend:
+    container_name: frontend
+    image: frontend
     build:
       context: .
       dockerfile: ./docker/nextjs.dockerfile
@@ -38,6 +42,8 @@ services:
       - 3000:3000
     networks:
       - nextjs_net
+    command: npm run dev
+
 
 networks:
   spring_net:
