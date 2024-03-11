@@ -1,11 +1,9 @@
-FROM node:16-alpine 
-WORKDIR /app
+FROM node:21.2.0
 
-COPY nextjs .
+WORKDIR /usr/src/app
 
-RUN npm ci 
-RUN npm run build
+COPY ./nextjs/package*.json .
+# COPY ./nextjs/.npmrc .
+RUN npm install
 
-ENV NODE_ENV production
-
-CMD [ "npx", "serve", "build" ]
+VOLUME /usr/src/app
