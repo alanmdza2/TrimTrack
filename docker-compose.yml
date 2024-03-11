@@ -8,8 +8,6 @@ services:
       - ./docker/mysql.env
     ports:
       - 3306:3306
-    networks:
-      - spring_net
     volumes:
       - ./mysql/data.sql:/docker-entrypoint-initdb.d/data.sql
     healthcheck:
@@ -25,9 +23,6 @@ services:
       - ./spring/:/app/src
     ports:
       - 8080:8080
-    networks:
-      - spring_net
-      - nextjs_net
     depends_on:
       database:
         condition: service_healthy
@@ -43,11 +38,4 @@ services:
     volumes:
       - ./nextjs/:/usr/src/app/
       - /usr/src/app/node_modules/
-    networks:
-      - nextjs_net
     command: npm run dev
-
-
-networks:
-  spring_net:
-  nextjs_net:
