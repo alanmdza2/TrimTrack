@@ -1,12 +1,26 @@
 USE TrimTrack_dev;
 
-CREATE TABLE users(
-    id INT NOT NULL AUTO_INCREMENT,
-    name VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    status VARCHAR(50) NOT NULL,
-    PRIMARY KEY (id)
+-- Tabla Cliente
+CREATE TABLE usuario (
+  idusuario INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
+  nombreapellido VARCHAR(255) NOT NULL,
+  telefono INT NOT NULL,
+  mail VARCHAR(255),
+  contraseña VARCHAR(255)
 );
 
-INSERT INTO users (name, email, status)
-VALUES('Hans', 'hans@mail.com', 'active');
+-- Tabla Servicio
+CREATE TABLE servicio (
+  idservicio INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
+  descripcion VARCHAR(255),
+  precio INT
+);
+
+-- Tabla Turno
+CREATE TABLE Turno (
+  idturno INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
+  fechahora TIMESTAMP,
+  nota TEXT,
+  idusuario INT FOREIGN KEY REFERENCES usuario(idusuario) NOT NULL,
+  idservicio INT FOREIGN KEY REFERENCES servicio(idservicio) NOT NULL
+);
