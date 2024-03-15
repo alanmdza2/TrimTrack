@@ -5,8 +5,8 @@ CREATE TABLE usuario (
   idusuario INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
   nombreapellido VARCHAR(255) NOT NULL,
   telefono INT NOT NULL,
-  mail VARCHAR(255),
-  contraseña VARCHAR(255)
+  mail VARCHAR(255) NOT NULL,
+  dni INT NOT NULL
 );
 
 -- Tabla Servicio
@@ -17,7 +17,7 @@ CREATE TABLE servicio (
 );
 
 -- Tabla Turno
-CREATE TABLE Turno (
+CREATE TABLE turno (
   idturno INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
   fechahora TIMESTAMP,
   nota TEXT,
