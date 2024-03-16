@@ -20,7 +20,7 @@ services:
       context: .
       dockerfile: ./docker/spring.dockerfile
     volumes:
-      - ./spring/:/app/src
+      - ./spring/:/app/src 
     ports:
       - 8080:8080
     depends_on:
@@ -34,8 +34,8 @@ services:
       context: .
       dockerfile: ./docker/nextjs.dockerfile
     ports:
-      - 3000:3000
+      - 3000:3000 
     volumes:
-      - ./nextjs/:/usr/src/app/
-      - /usr/src/app/node_modules/
+      - ./nextjs/:/usr/src/app
+      - /usr/src/app/node_modules
     command: npm run dev
