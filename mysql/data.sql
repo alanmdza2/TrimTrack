@@ -24,3 +24,4 @@ CREATE TABLE Turno (
   idusuario INT FOREIGN KEY REFERENCES usuario(idusuario) NOT NULL,
   idservicio INT FOREIGN KEY REFERENCES servicio(idservicio) NOT NULL
 );
+
