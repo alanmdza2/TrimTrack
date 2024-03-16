@@ -1,10 +1,10 @@
-package com.is.spring.service;
+package com.is.spring.turnos.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.is.spring.model.Turno;
-import com.is.spring.persistence.TurnoRepository;
+import com.is.spring.turnos.model.Turno;
+import com.is.spring.turnos.persistence.TurnoRepository;
 
 import java.util.List;
 

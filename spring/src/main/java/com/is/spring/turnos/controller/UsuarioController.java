@@ -1,9 +1,8 @@
-package com.is.spring.controller;
+package com.is.spring.turnos.controller;
 
 
-import com.is.spring.model.Usuario;
-
-import com.is.spring.service.UsuarioService;
+import com.is.spring.turnos.model.Usuario;
+import com.is.spring.turnos.service.UsuarioService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

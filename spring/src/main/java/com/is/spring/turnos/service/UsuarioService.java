@@ -1,9 +1,9 @@
-package com.is.spring.service;
+package com.is.spring.turnos.service;
 
 
-import com.is.spring.model.Usuario;
+import com.is.spring.turnos.model.Usuario;
+import com.is.spring.turnos.persistence.UsuarioRepository;
 
-import com.is.spring.persistence.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;

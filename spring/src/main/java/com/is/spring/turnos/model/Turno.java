@@ -1,4 +1,4 @@
-package com.is.spring.model;
+package com.is.spring.turnos.model;
 import com.google.protobuf.Timestamp;
 
 import jakarta.persistence.Column;

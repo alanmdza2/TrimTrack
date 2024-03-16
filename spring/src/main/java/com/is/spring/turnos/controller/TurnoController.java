@@ -1,12 +1,13 @@
-package com.is.spring.controller;
+package com.is.spring.turnos.controller;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.is.spring.model.Turno;
-import com.is.spring.service.TurnoService;
+import com.is.spring.turnos.model.Turno;
+import com.is.spring.turnos.service.TurnoService;
+
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;

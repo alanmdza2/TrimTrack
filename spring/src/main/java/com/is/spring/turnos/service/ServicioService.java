@@ -1,13 +1,12 @@
-package com.is.spring.service;
+package com.is.spring.turnos.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.is.spring.model.Servicio;
-
-import com.is.spring.persistence.ServicioRepository;
+import com.is.spring.turnos.model.Servicio;
+import com.is.spring.turnos.persistence.ServicioRepository;
 
 @Service
 public class ServicioService {

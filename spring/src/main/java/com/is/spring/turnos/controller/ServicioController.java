@@ -1,4 +1,4 @@
-package com.is.spring.controller;
+package com.is.spring.turnos.controller;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.is.spring.model.Servicio;
-import com.is.spring.service.ServicioService;
+import com.is.spring.turnos.model.Servicio;
+import com.is.spring.turnos.service.ServicioService;
 
 @RestController
 public class ServicioController {
