@@ -7,7 +7,8 @@ CREATE TABLE usuario (
   telefono VARCHAR(15),
   mail VARCHAR(255),
   contrasenia VARCHAR(255),
-  dni VARCHAR(8) NOT NULL
+  dni VARCHAR(8) NOT NULL,
+  rol VARCHAR(50) NOT NULL
 );
 
 -- Tabla Servicio
