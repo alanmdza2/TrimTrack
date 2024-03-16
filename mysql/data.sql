@@ -2,25 +2,28 @@ USE TrimTrack_dev;
 
 -- Tabla Cliente
 CREATE TABLE usuario (
-  idusuario INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
+  idusuario INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nombreapellido VARCHAR(255) NOT NULL,
-  telefono INT NOT NULL,
+  telefono VARCHAR(15),
   mail VARCHAR(255),
-  contraseña VARCHAR(255)
+  contrasenia VARCHAR(255),
+  dni VARCHAR(8) NOT NULL
 );
 
 -- Tabla Servicio
 CREATE TABLE servicio (
-  idservicio INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
+  idservicio INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   descripcion VARCHAR(255),
   precio INT
 );
 
 -- Tabla Turno
-CREATE TABLE Turno (
-  idturno INT PRIMARY KEY NOT NULL AUTOINCREMENTAL,
+CREATE TABLE turno (
+  idturno INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   fechahora TIMESTAMP,
   nota TEXT,
-  idusuario INT FOREIGN KEY REFERENCES usuario(idusuario) NOT NULL,
-  idservicio INT FOREIGN KEY REFERENCES servicio(idservicio) NOT NULL
+  idusuario INT,
+  idservicio INT,
+  FOREIGN KEY (idusuario) REFERENCES usuario(idusuario),
+  FOREIGN KEY (idservicio) REFERENCES servicio(idservicio)
 );
