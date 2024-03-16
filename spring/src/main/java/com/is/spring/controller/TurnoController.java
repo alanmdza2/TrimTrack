@@ -33,12 +33,12 @@ public class TurnoController {
         turnoService.deleteTurno(id);
     }
 
-    @PostMapping("/turnos")
+    @PostMapping("/turno")
     public Turno addTurno(@RequestBody Turno turno) {
          return turnoService.saveTurno(turno);
     }
 
-    @PutMapping("/turnos")
+    @PutMapping("/turno/{idturno}")
     public Turno update(@RequestBody Turno turno) {
        
         turnoService.saveTurno(turno);

@@ -19,7 +19,7 @@ public class Usuario {
     @Column
     private String email;
     @Column
-    private String contraseña;
+    private String contrasenia;
 
 
 
@@ -55,24 +55,24 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getcontrasenia() {
+        return contrasenia;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setcontrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     public Usuario() {
     }
     
-    public Usuario(int idusuario,String nombreapellido,int telefono, String email, String contraseña) {
+    public Usuario(int idusuario,String nombreapellido,int telefono, String email, String contrasenia) {
 
         this.idusuario=idusuario;
         this.nombreapellido=nombreapellido;
         this.telefono=telefono;
         this.email=email;
-        this.contraseña=contraseña;
+        this.contrasenia=contrasenia;
 
     }
 

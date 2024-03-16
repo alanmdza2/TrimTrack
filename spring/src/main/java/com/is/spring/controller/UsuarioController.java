@@ -43,12 +43,12 @@ public class UsuarioController {
         userService.deleteUsuario(id);
     }
 
-    @PostMapping("/usuarios")
+    @PostMapping("/usuario")
     public Usuario addTurno(@RequestBody Usuario usuario) {
          return userService.saveUsuario(usuario);
     }
 
-    @PutMapping("/usuarios")
+    @PutMapping("/usuario/{idusuario}")
     public Usuario update(@RequestBody Usuario usuario) {
         userService.saveUsuario(usuario);
         return usuario;

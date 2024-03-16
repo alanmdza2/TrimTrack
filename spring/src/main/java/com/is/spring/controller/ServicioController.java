@@ -20,28 +20,28 @@ public class ServicioController {
     @Autowired
      private ServicioService servicioService;
 
-    @GetMapping("/usuario")
+    @GetMapping("/servicio")
     public List<Servicio> getAllServicios() {
         return servicioService.getAllServicios();
     }
-    
 
-    @GetMapping("/usuario/{idusuario}")
-    public Servicio getUsuarioById(@PathVariable int id) {
+
+    @GetMapping("/servicio/{idservicio}")
+    public Servicio getServicioById(@PathVariable int id) {
         return servicioService.getServicioById(id);
     }
 
-    @DeleteMapping("/usuario/{idusuario}")
+    @DeleteMapping("/servicio/{idservicio}")
     public void deleteServicio(@PathVariable int id) {
         servicioService.deleteServicio(id);
     }
 
-    @PostMapping("/usuarios")
+    @PostMapping("/servicio")
     public Servicio addTurno(@RequestBody Servicio servicio) {
          return servicioService.saveServicio(servicio);
     }
 
-    @PutMapping("/usuarios")
+    @PutMapping("/servicio/{idservicio}")
     public Servicio update(@RequestBody Servicio servicio) {
         servicioService.saveServicio(servicio);
         return servicio;
