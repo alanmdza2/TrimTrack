@@ -15,11 +15,13 @@ public class Usuario {
     @Column
     private String nombreapellido;
     @Column
-    private int telefono;
+    private String telefono;
     @Column
     private String email;
     @Column
     private String contrasenia;
+    @Column
+    private String dni;
 
 
 
@@ -39,11 +41,11 @@ public class Usuario {
         this.nombreapellido = nombreapellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -63,16 +65,27 @@ public class Usuario {
         this.contrasenia = contrasenia;
     }
 
+    
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
     public Usuario() {
     }
     
-    public Usuario(int idusuario,String nombreapellido,int telefono, String email, String contrasenia) {
+    public Usuario(int idusuario,String nombreapellido,String telefono, String email, String contrasenia,String dni) {
 
         this.idusuario=idusuario;
         this.nombreapellido=nombreapellido;
         this.telefono=telefono;
         this.email=email;
         this.contrasenia=contrasenia;
+        this.dni=dni;
 
     }
 

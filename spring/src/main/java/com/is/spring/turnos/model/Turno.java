@@ -23,6 +23,7 @@ public class Turno {
     private int idservicio;
 
     
+     
 
     public int getIdusuario() {
         return idusuario;
