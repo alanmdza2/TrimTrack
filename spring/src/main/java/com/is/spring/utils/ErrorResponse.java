@@ -1,4 +1,4 @@
-package com.is.spring.config;
+package com.is.spring.utils;
 
 import java.util.List;
 import lombok.AllArgsConstructor;
