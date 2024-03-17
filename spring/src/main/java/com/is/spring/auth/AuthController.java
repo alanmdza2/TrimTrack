@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.is.spring.utils.SuccessResponse;
+
 import lombok.RequiredArgsConstructor;
 
 @RestController
@@ -16,12 +18,16 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping(value = "login")
-    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
-        return ResponseEntity.ok(authService.login(request));
+    public ResponseEntity<SuccessResponse<AuthResponse>> login(@RequestBody LoginRequest request) {
+        AuthResponse authResponse = authService.login(request);
+        SuccessResponse<AuthResponse> successResponse = new SuccessResponse<>(200, authResponse);
+        return ResponseEntity.ok(successResponse);
     }
 
     @PostMapping(value = "register")
-    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
-        return ResponseEntity.ok(authService.register(request));
+    public ResponseEntity<SuccessResponse<AuthResponse>> register(@RequestBody RegisterRequest request) {
+        AuthResponse authResponse = authService.register(request);
+        SuccessResponse<AuthResponse> successResponse = new SuccessResponse<>(200, authResponse);
+        return ResponseEntity.ok(successResponse);
     }
 }
