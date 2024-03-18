@@ -1,31 +1,31 @@
-package com.is.spring.turnos.service;
+package com.is.spring.turnos;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.is.spring.turnos.model.Turno;
-import com.is.spring.turnos.persistence.TurnoRepository;
-
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TurnoService {
+
     @Autowired
     private TurnoRepository turnoRepository;
-    
+
     public List<Turno> getAllTurnos() {
         return turnoRepository.findAll();
     }
-    
-    public Turno getTurnoById(int id) {
-        return turnoRepository.findById(id).orElse(null);
+
+    public Optional<Turno> getTurnoById(Integer id) {
+        return turnoRepository.findById(id);
     }
-    
-    public Turno saveTurno(Turno turno) {
+
+    public Turno saveturno(Turno turno) {
         return turnoRepository.save(turno);
     }
-    
-    public void deleteTurno(int id) {
+
+    public void deleteTurno(Integer id) {
         turnoRepository.deleteById(id);
     }
 }
