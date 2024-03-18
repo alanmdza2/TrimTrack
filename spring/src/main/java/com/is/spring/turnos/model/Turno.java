@@ -3,7 +3,10 @@ import com.google.protobuf.Timestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,27 +20,33 @@ public class Turno {
     private Timestamp fechahora;
     @Column
     private String nota;
-    @Column
-    private int idusuario;
-    @Column
-    private int idservicio;
+  
+
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "idservicio")
+    private Servicio servicio;
+     
 
     
 
-    public int getIdusuario() {
-        return idusuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public int getIdServicio() {
-        return idservicio;
+    public Servicio getServicio() {
+        return servicio;
     }
 
-    public void setIdServicio(int idServicio) {
-        this.idservicio = idServicio;
+    public void setServicio(Servicio servicio) {
+        this.servicio = servicio;
     }
 
     public int getIdturno() {
@@ -70,12 +79,12 @@ public class Turno {
     public Turno() {
     }
 
-    public Turno(int idturno,Timestamp fechahora, String nota, int idusuario,int idservicio) {
+    public Turno(int idturno,Timestamp fechahora, String nota, Usuario usuario,Servicio servicio) {
         this.idturno=idturno;
         this.fechahora = fechahora;
         this.nota = nota;
-        this.idusuario = idusuario;
-        this.idservicio=idservicio;
+        this.usuario = usuario;
+        this.servicio=servicio;
         
     }
 }

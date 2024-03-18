@@ -5,7 +5,7 @@ CREATE TABLE usuario (
   idusuario INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   nombreapellido VARCHAR(255) NOT NULL,
   telefono VARCHAR(15),
-  mail VARCHAR(255),
+  email VARCHAR(255),
   contrasenia VARCHAR(255),
   dni VARCHAR(8) NOT NULL UNIQUE,
   rol VARCHAR(50) NOT NULL
