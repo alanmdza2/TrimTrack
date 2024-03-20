@@ -37,5 +37,5 @@ services:
       - 3000:3000 
     volumes:
       - ./nextjs/:/usr/src/app
-      - /usr/src/app/node_modules
+      - /usr/src/node_modules
     command: npm run dev
