@@ -1,10 +1,10 @@
 import React from 'react'
+import Servicio from '@/components/Servicio'
 
 const page = () => {
     return (
         <section>
-            <div className='bg-neutral-800'>Hola</div>
-            <div></div>
+            <Servicio legend={'Corte de pelo'} price={'125'} time={'90 Minutos'}/>
         </section>
     )
 }
