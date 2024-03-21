@@ -5,7 +5,7 @@ const Servicio = ({ legend, price, time }) => {
         <section className=''>
             <div>
                 <div>{legend}</div>
-                <div></div>
+                <div>{price}, {time}</div>
             </div>
 
         </section>
