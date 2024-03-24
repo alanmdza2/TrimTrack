@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Update from "./updateTurno/page";
+import Update from "./formulario/page";
 
 export default function Home() {
   return (
