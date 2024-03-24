@@ -50,3 +50,65 @@
 ::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+
+
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background: #202020;
+  color: white;
+}
+
+
+form{
+
+  width: 30rem;
+  display: grid;
+  row-gap: 0.5rem;
+
+}
+
+
+.politicas{
+  margin: auto;
+}
+
+
+
+.button1{
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 120px;
+}
+
+.inputNombre{
+  border-radius: 7px;
+  height: 30px;
+  width: 30rem;
+}
+
+.inputDocumento{
+  border-radius: 7px;
+  height: 30px;
+  width: 14.5rem;
+}
+
+.inputTelefono{
+  border-radius: 7px;
+  height: 30px;
+  width: 14.5rem;
+}
+
+.inputComentario{
+
+  border-radius: 7px;
+  height: 60px;
+  width: 30rem;
+}
