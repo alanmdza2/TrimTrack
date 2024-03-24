@@ -1,23 +1,12 @@
-'use client'
-import { useState } from 'react';
-import {format} from 'date-fns';
+import * as React from 'react';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
-import { DayPicker } from 'react-day-picker';
-import 'react-day-picker/dist/style.css';
-
-export default function Calendar() {
-  const [selected, setSelected] = useState<Date>(any);
-
-  let footer = <p>Please pick a day.</p>;
-  if (selected) {
-    footer = <p>You picked {format(selected, 'PP')}.</p>;
-  }
+export default function BasicDateCalendar() {
   return (
-    <DayPicker
-      mode="single"
-      selected={selected}
-      onSelect={setSelected}
-      footer={footer}
-    />
+    <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <DateCalendar />
+    </LocalizationProvider>
   );
 }
