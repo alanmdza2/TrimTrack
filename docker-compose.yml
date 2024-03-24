@@ -1,17 +1,17 @@
 version: "3.8"
 
 services:
-  database:
-    container_name: database
-    image: mysql:8
-    env_file:
-      - ./docker/mysql.env
-    ports:
-      - 3306:3306
-    volumes:
-      - ./mysql/data.sql:/docker-entrypoint-initdb.d/data.sql
-    healthcheck:
-      test: mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} ping
+  # database:
+  #   container_name: database
+  #   image: mysql:8
+  #   env_file:
+  #     - ./docker/mysql.env
+  #   ports:
+  #     - 3306:3306
+  #   volumes:
+  #     - ./mysql/data.sql:/docker-entrypoint-initdb.d/data.sql
+  #   healthcheck:
+  #     test: mysqladmin -u${MYSQL_USER} -p${MYSQL_PASSWORD} ping
 
   backend:
     container_name: backend
@@ -23,19 +23,19 @@ services:
       - ./spring/:/app/src 
     ports:
       - 8080:8080
-    depends_on:
-      database:
-        condition: service_healthy
+    # depends_on:
+    #   database:
+    #     condition: service_healthy
 
-  frontend:
-    container_name: frontend
-    image: frontend
-    build:
-      context: .
-      dockerfile: ./docker/nextjs.dockerfile
-    ports:
-      - 3000:3000 
-    volumes:
-      - ./nextjs/:/usr/src/app
-      - /usr/src/node_modules
-    command: npm run dev
+  # frontend:
+  #   container_name: frontend
+  #   image: frontend
+  #   build:
+  #     context: .
+  #     dockerfile: ./docker/nextjs.dockerfile
+  #   ports:
+  #     - 3000:3000 
+  #   volumes:
+  #     - ./nextjs/:/usr/src/app
+  #     - /usr/src/node_modules
+  #   command: npm run dev

@@ -1,8 +1,5 @@
-# Usa una imagen base de Java
-FROM openjdk:17-jdk-alpine
-
-# Instala Maven
-RUN apk add --no-cache maven
+# Etapa de compilación
+FROM maven:3.8.4-openjdk-17-slim AS build
 
 WORKDIR /app
 
@@ -13,15 +10,18 @@ RUN mvn dependency:go-offline
 # Copia el código fuente de la aplicación
 COPY spring/src ./src
 
+# Compila y empaqueta la aplicación
+RUN mvn clean package
+
+# Etapa de ejecución
+FROM openjdk:17-jdk-alpine
+
+WORKDIR /app
+
+# Copia el artefacto construido desde la etapa de compilación
+COPY --from=build /app/target/spring-0.0.1-SNAPSHOT.jar .
+
 EXPOSE 8080
 
-# Variable de entorno para controlar el modo de depuración
-ENV DEBUG=FALSE
-
-# Si DEBUG=FALSE, compila y empaqueta la aplicación, y luego la ejecuta
-CMD if [ "$DEBUG" = "FALSE" ]; then \
-      cd ./src && mvn clean package && \
-      java -jar target/spring-0.0.1-SNAPSHOT.jar; \
-    else \
-      sleep infinity; \
-    fi
+# Ejecuta la aplicación
+CMD ["java", "-jar", "spring-0.0.1-SNAPSHOT.jar"]
