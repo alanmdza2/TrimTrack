@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@font-face {
+  font-family: 'noto-sans';
+  src: url('/public/NotoSans-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'fjallaone';
+  src: url('/public/FjallaOne-Regular.ttf');
+}
+
+.burger-icon{
+  align-items: center;
+  justify-content: center;
+}
+
+.font-1{
+  font-family: "noto-sans", sans-serif;
+}
+
+.font-2{
+  font-family: "fjallaone", sans-serif;
+  font-weight: 500;
+}
+
+.calendar-background{
+  background-color: white;
+}
+
+.background{
+  background-color: #424549;
+}
+
+::-webkit-scrollbar {
+    width: 18px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: #424549;
+    border-radius: 5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+ 
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
