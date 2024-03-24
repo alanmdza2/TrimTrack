@@ -20,33 +20,37 @@ const page = () => {
     }, [])
     */
     return (
-        <div className='bg-[#303030]'>
-            <div>
-                <h4 className='text-2xl'>Seleccione un Servicio</h4>
-            </div>
-            <div><h5>Placeholder barra de progreso</h5></div>
-            <div>
-                <form action="" className='w-full flex flex-col '>
-                    <div className='flex-col justify-center '>
-                        <div className='flex flex-row'>
-                            <input type="checkbox" name="" id="" />
-                            <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
+        <div className='h-screen w-full bg-[#303030] flex justify-around'>
+            <div class="w-2/3 mt-5 content-center">
+                <div class="text-2xl font-1 text-white pb-10">
+                    Seleccione un Servicio
+                </div>
+                <div>
+                    <form action="" className='w-full flex flex-col'>
+                        <div className='flex-col justify-center'>
+                            <div >
+                                <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
+                            </div>
+                            <div >
+                                <Servicio legend={'Corte de Pelo + Barba'} price={'$4000'} time={'30 Minutos'} />
+                            </div>
+                            <div >
+                                <Servicio legend={'Color'} price={'$5500'} time={'60 Minutos'} />
+                            </div>
                         </div>
-                        <div className='flex flex-row'>
-                            <input type="checkbox" name="" id="" />
-                            <Servicio legend={'Corte de Pelo + Barba'} price={'$4000'} time={'30 Minutos'} />
+                        <div className='grid grid-cols-2 gap-8 items-center'>
+                            <div class="text-l w-full font-1 text-white pt-7 colspan-1 ">
+                                <u>Tienes alguna duda? Conoce nuestras politicas de reserva</u>
+                            </div>
+                            <button class="w-2/3 h-2/3 justify-self-end colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                                Siguiente
+                            </button>
                         </div>
-                        <div className='flex flex-row'>
-                            <input type="checkbox" name="" id="" />
-                            <Servicio legend={'Color'} price={'$5500'} time={'60 Minutos'} />
-                        </div>
-                    </div>
-                </form>
+
+                    </form>
+                </div>
             </div>
-            <div className='flex flex-row justify-between'>
-                <a className='text-xs underline'>¿Tenes alguna duda? Conoce nuestra politica de reservas.</a>
-                <Button legend={'Siguiente'} />
-            </div>
+
         </div>
     )
 }

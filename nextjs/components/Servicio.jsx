@@ -1,16 +1,24 @@
 import React from 'react'
 
-const Servicio = ({ legend, price, time }) => {
+const Servicio = ({ legend, price, time, selected }) => {
     return (
-            <div className='bg-[#424549] flex flex-row justify-between w-1/3 m-3 py-1 rounded-md'>
-                <div className='flex flex-col px-10'>
-                    <div><p className='text-lg'>{legend}</p></div>
-                    <div><p className='text-xs'>{time}</p></div>
+        <div className='bg-[#424549] w-full rounded-md mb-5'>
+            <div class="grid grid-cols-2">
+                <div class="colspan-1">
+                    <div className='px-10'>
+                        <div><p className='text-lg text-white'>{legend}</p></div>
+                        <div><p className='text-xs text-white'>{time}</p></div>
+                    </div>
+                    <div className=' px-10'>
+                        <p className='text-lg text-white   '>{price}</p>
+                    </div>
                 </div>
-                <div className='flex items-center px-10'>
-                    <p className='text-lg'>{price}</p>
+                <div class="colspan-1 content-center justify-self-end pr-10">
+                    <input type="checkbox" name="" id="" />
                 </div>
             </div>
+
+        </div>
     )
 }
 
