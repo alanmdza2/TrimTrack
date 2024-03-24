@@ -1,10 +1,8 @@
-'use-client'
-import React, { useEffect } from 'react'
 import Servicio from '@/components/Servicio'
 import Button from '@/components/Button'
 
 const page = () => {
-    const getData = async (e) => {
+    /*const getData = async (e) => {
         const api = 'http://localhost:8080/api/turno';
         const data = await fetch(api, {
             method: 'GET',
@@ -20,23 +18,36 @@ const page = () => {
     useEffect(() => {
         getData();
     }, [])
-
+    */
     return (
-        <section className='bg-'>
+        <div className='bg-[#303030]'>
             <div>
-                <h4>Seleccione un Servicio</h4>
+                <h4 className='text-2xl'>Seleccione un Servicio</h4>
             </div>
             <div><h5>Placeholder barra de progreso</h5></div>
             <div>
-                <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
-                <Servicio legend={'Corte de Pelo + Barba'} price={'$4000'} time={'30 Minutos'} />
-                <Servicio legend={'Color'} price={'$5500'} time={'60 Minutos'} />
+                <form action="" className='w-full flex flex-col '>
+                    <div className='flex-col justify-center '>
+                        <div className='flex flex-row'>
+                            <input type="checkbox" name="" id="" />
+                            <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
+                        </div>
+                        <div className='flex flex-row'>
+                            <input type="checkbox" name="" id="" />
+                            <Servicio legend={'Corte de Pelo + Barba'} price={'$4000'} time={'30 Minutos'} />
+                        </div>
+                        <div className='flex flex-row'>
+                            <input type="checkbox" name="" id="" />
+                            <Servicio legend={'Color'} price={'$5500'} time={'60 Minutos'} />
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div>
-                <p>¿Tenes alguna duda? Conoce nuestra politica de reservas.</p>
+            <div className='flex flex-row justify-between'>
+                <a className='text-xs underline'>¿Tenes alguna duda? Conoce nuestra politica de reservas.</a>
                 <Button legend={'Siguiente'} />
             </div>
-        </section>
+        </div>
     )
 }
 
