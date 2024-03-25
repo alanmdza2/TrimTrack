@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Servicio = ({ legend, price, time, selected }) => {
+const Servicio = ({ legend, price, time, id }) => {
     return (
         <div className='bg-[#424549] w-full rounded-md mb-5'>
             <div className="grid grid-cols-2">
@@ -14,7 +14,7 @@ const Servicio = ({ legend, price, time, selected }) => {
                     </div>
                 </div>
                 <div className="colspan-1 content-center justify-self-end pr-10">
-                    <input type="checkbox" name="" id="" />
+                    <input type="checkbox" name={id} id={id} />
                 </div>
             </div>
         </div>
