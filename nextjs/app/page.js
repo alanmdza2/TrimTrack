@@ -1,3 +1,5 @@
+'use client'
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Formulario from "./formulario/page";
 import Date from "./fechahora/page";
@@ -5,6 +7,8 @@ import Servicio from "./components/Servicio";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
+  const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzEwODQzMiIsImlhdCI6MTcxMTM0NzM1MywiZXhwIjoxNzExMzQ4NzkzfQ.xjYbaPg2ASe1glea_3bc-y6wAJQ9enTVzwuXv-ug2Mo';
+  const [servivcio, setServicio] = useState([]);
   const getServicio = async () => {
     try {
         const api = 'https://trimtrack-production.up.railway.app/api/servicio';
@@ -17,10 +21,17 @@ export default function Home() {
         });
         const res = await data.json();
         console.log(res);
-        setData(res)
+        setServicio(res)
     } catch (error) {
         console.log(error.message);
     }
+}
+
+    useEffect(() => {
+      getServicio();
+  }, [])
+const handleSubmit = async (e) => {
+  localStorage.setItem('tipoServicio', idServicio);
 }
   return (  
     <>      <Navbar></Navbar>
@@ -32,16 +43,18 @@ export default function Home() {
                 <div>
                     <form action="" className='w-full flex flex-col'>
                         <div className='flex-col justify-center'>
-                          
-                            <div >
-                                <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
-                            </div>
+                          {servivcio.map((item) => (
+                                  <div >
+                                      <Servicio legend={item.descripcion} price={item.price} time={'30 Minutos'} />
+                                  </div>
+                        ))}
                         </div>
                         <div className='grid grid-cols-2 gap-8 items-center'>
                             <div class="text-l w-full font-1 text-white pt-7 colspan-1 ">
                                 <u>Tienes alguna duda? Conoce nuestras politicas de reserva</u>
                             </div>
-                            <button class="w-2/3 h-2/3 justify-self-end colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                            <button onClick={(e) => {window.location.href = 'fechahora'}}
+                                    class="w-2/3 h-2/3 justify-self-end colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                 Siguiente
                             </button>
                         </div>
