@@ -3,11 +3,9 @@ import React, { useState, useEffect } from 'react';
 import Navbar from "../components/Navbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash,faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import {token} from '../../public/token' 
 
 export default function Formulario (){
-    
-    const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzEwODQzMiIsImlhdCI6MTcxMTM0NzM1MywiZXhwIjoxNzExMzQ4NzkzfQ.xjYbaPg2ASe1glea_3bc-y6wAJQ9enTVzwuXv-ug2Mo';
-
 
     const [usuario, setUsuario] = useState({
         nombreapellido: "",
@@ -17,13 +15,14 @@ export default function Formulario (){
         dni: ""
       });
 
-    const handleChangeUsuario = (e) => {
+    const handleChange = (e) => {
         setUsuario({
           ...usuario,
           [e.target.name]: e.target.value,
         });
       };
-      const handleSubmitUsuairo = async (e) => {
+      const handleSubmit = async (e) => {
+        console.log("usuario creado")
         e.preventDefault();
          try {
              const response = await fetch(`https://trimtrack-production.up.railway.app/api/auth/register`, {
@@ -42,7 +41,7 @@ export default function Formulario (){
         //window.location.href = 'home'
       };
     return(
-        <form method="POST" onSubmit={handleSubmitUsuairo}>
+        <form method="POST" onSubmit={handleSubmit}>
         <body>
         <Navbar></Navbar>
     
@@ -53,16 +52,16 @@ export default function Formulario (){
                 </div>
                 <div className='fild'>
                     <p>Nombre y apellido</p>
-                    <textarea id='nombre' name='nombreapellido' onChange={handleChangeUsuario}></textarea>
+                    <textarea id='nombre' name='nombreapellido' onChange={handleChange}></textarea>
                 </div>
                 <div className='fild' style={{display: "flex"}}>
                     <div>
                         <p>Nº de documetno</p>
-                        <textarea id='documento' name='dni' onChange={handleChangeUsuario}></textarea>
+                        <textarea id='documento' name='dni' onChange={handleChange}></textarea>
                     </div>
                     <div style={{marginLeft: "auto"}}> 
                         <p>Telefono</p>
-                        <textarea id='telefono' name='telefono'onChange={handleChangeUsuario}></textarea>
+                        <textarea id='telefono' name='telefono'onChange={handleChange}></textarea>
                     </div>
                 </div>
                 <div className='fild'>
@@ -74,8 +73,10 @@ export default function Formulario (){
                     <p>Estoy de acuerdo con las politicas reservadas</p>
                 </div>
                 <div className='butons'>
-                    <button>Finalizar</button>
-                    <button>Atras</button>
+                    <button onClick={(e) => {handleSubmit(e)}}
+                            class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">Finalizar</button>
+                    <button onClick={(e) => {e.preventDefault(); window.location.href = 'fechahora'}}
+                            class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">Atras</button>
                 </div>
                 
             </div>
@@ -85,5 +86,6 @@ export default function Formulario (){
         </div>
     </body>
     </form>
+    
         )
 }

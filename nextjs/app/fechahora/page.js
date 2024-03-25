@@ -3,11 +3,19 @@ import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Calendar from "../components/Calendar";
 import Appointment from "../components/Appointment";
+import {token} from '../../public/token' 
 
 export default function DateReservation() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [availableAppointments, setAvailableAppointments] = useState([]);
-    const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzEwODQzMiIsImlhdCI6MTcxMTM1MDk0MCwiZXhwIjoxNzExMzUyMzgwfQ.6OwpvqznW199rULXGdnVA9MTq_29PJqAbJvZiOfWUZo";
+    const[fechaHora, setFechaHora] = useState([]);
+    const servicio = localStorage.getItem('tipoServicio');
+    const[turno, SetTurno]= useState({
+        fechahora:"",
+        nota:"",
+        idUsuario:"1",
+        idServicio:"",
+    });
    
     useEffect(() => {
         if (selectedDate) {
@@ -58,6 +66,30 @@ export default function DateReservation() {
         }
         return hourArray;
     };
+    const handleChange = (e) => {
+        console.log("dkjsnfaoln")
+        
+        setFechaHora({
+          [1]: e.target.value,
+        });
+    }   
+      const handleSubmit = async (e) => {
+        setFechaHora({
+            [0]: selectedDate,
+          });
+        SetTurno({
+            fechaHora: fechaHora[0]+fechaHora[1],
+            nota:"",
+            idUsuario:"1",
+            idServicio: servicio,
+        })
+         console.log(localStorage.getItem('tipoServicio'))
+        
+         e.preventDefault();
+         console.log(turno)
+       //Cookies.set('usuario', JSON.stringify(usuario));
+       //window.location.href = 'home'
+     };
 
     const updatedHourArray = generateHourArray().filter(hour => !availableAppointments.some(appointment => clearString(appointment.fechahora) === hour));
 
@@ -65,7 +97,7 @@ export default function DateReservation() {
         <div>
             <Navbar></Navbar>
             <div class="h-screen max-w-full bg-[#303030] flex justify-around">
-                <div class=" pt-8 grid grid-cols-2 gap-x-14 ">
+                <div class=" pt-8 grid grid-cols-2 gap-x-14 " onChange={handleChange}>
                     <div class="colspan-1">
                         <div class="text-2xl font-1 text-white pb-10">
                             Seleccione una fecha y hora
@@ -84,15 +116,17 @@ export default function DateReservation() {
                             <div class="h-96 p-6 background rounded-xl overflow-y-scroll scroll-smooth">
                                 <div class="flex flex-col w-full">
                                     {updatedHourArray.map((updatedHour, index) => (
-                                        <Appointment key={index} hour={updatedHour} />
+                                        <Appointment key={index} hour={updatedHour} onChange={handleChange}/>
                                     ))}
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-x-8 pt-8">
-                                <button class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                                <button onClick={(e) => {e.preventDefault(); window.location.href = '/'}}
+                                        class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                     Atrás
                                 </button>
-                                <button class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
+                                <button onClick={(e) => {handleSubmit(e)}}
+                                        class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                     Siguiente
                                 </button>
                             </div>

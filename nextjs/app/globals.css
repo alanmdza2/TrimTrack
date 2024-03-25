@@ -141,17 +141,6 @@ textarea{
 .fild div{
   width: 47%;
 }
-button{
-  width: 25%;  
-  height: 50px; 
-  margin-left: auto; 
-  background: #5865F2; 
-  color: white; 
-  font-size: 20px;
-  margin-top: 10px;
-  border-radius: 12px; 
-  border-width: 0;
-}
 
 .list{
   margin-top: 30px
