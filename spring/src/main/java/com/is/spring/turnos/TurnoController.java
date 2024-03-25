@@ -1,6 +1,9 @@
 package com.is.spring.turnos;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,8 +29,14 @@ public class TurnoController {
     private TurnoService turnoService;
 
     @GetMapping
-    public ResponseEntity<List<Turno>> obtenerTodosLosTurnos() {
-        List<Turno> turnos = turnoService.getAllTurnos();
+    public ResponseEntity<List<Turno>> obtenerTurnosPorFecha(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date fecha) {
+        List<Turno> turnos;
+        if (fecha != null) {
+            turnos = turnoService.getTurnosByFecha(fecha);
+        } else {
+            turnos = turnoService.getAllTurnos();
+        }
         return new ResponseEntity<>(turnos, HttpStatus.OK);
     }
 
@@ -42,13 +51,13 @@ public class TurnoController {
     public ResponseEntity<Turno> crearTurno(@RequestBody Turno turno) {
         Integer idusuario = turno.getIdusuario();
         Integer idservicio = turno.getIdservicio();
-    
+
         Usuario usuario = usuarioRepository.findById(idusuario).orElseThrow();
         Servicio servicio = servicioRepository.findById(idservicio).orElseThrow();
-    
+
         turno.setIdusuario(usuario.getIdusuario());
         turno.setIdservicio(servicio.getIdservicio());
-    
+
         Turno nuevoTurno = turnoService.saveturno(turno);
         return new ResponseEntity<>(nuevoTurno, HttpStatus.CREATED);
     }
