@@ -1,2 +1,2 @@
-const token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzEwODQzMiIsImlhdCI6MTcxMTM2MDE2NywiZXhwIjoxNzExMzYxNjA3fQ.bgp3eve5Zl8drANJbGJu9YpkzZ1uR18iF-Yh38PWusk"
+const token="eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIyNzEwODQzMiIsImlhdCI6MTcxMTM2MTY1OSwiZXhwIjoxNzExMzYzMDk5fQ.m-diKiC5PHs-VkR_vIPwhJSa1HqJXV_mVsC9q4q34wo"
 module.exports={token}

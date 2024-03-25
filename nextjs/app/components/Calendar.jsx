@@ -5,7 +5,8 @@ import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
 export default function BasicDateCalendar({ onDateSelect }) {
   const handleDateChange = (date) => {
-    onDateSelect(date);
+    onDateSelect(date); 
+    localStorage.setItem('dia', date);
   };
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>

@@ -8,8 +8,9 @@ import {token} from '../../public/token'
 export default function DateReservation() {
     const [selectedDate, setSelectedDate] = useState(null);
     const [availableAppointments, setAvailableAppointments] = useState([]);
-    const[fechaHora, setFechaHora] = useState([]);
-    const servicio = localStorage.getItem('tipoServicio');
+    const[fechaHora, setFechaHora] = useState("");
+    const[servicio, setServicio] = useState(localStorage.getItem('tipoServicio'))
+
     const[turno, SetTurno]= useState({
         fechahora:"",
         nota:"",
@@ -65,27 +66,19 @@ export default function DateReservation() {
             hourArray.push(`${formattedHour}:00`);
         }
         return hourArray;
-    };
-    const handleChange = (e) => {
-        console.log("dkjsnfaoln")
-        
-        setFechaHora({
-          [1]: e.target.value,
-        });
-    }   
+    };  
       const handleSubmit = async (e) => {
-        setFechaHora({
-            [0]: selectedDate,
-          });
+        
+        e.preventDefault();
+        console.log("paso")
+        setFechaHora(localStorage.getItem('dia'));
         SetTurno({
-            fechaHora: fechaHora[0]+fechaHora[1],
+            fechaHora: fechaHora,
             nota:"",
             idUsuario:"1",
             idServicio: servicio,
         })
-         console.log(localStorage.getItem('tipoServicio'))
         
-         e.preventDefault();
          console.log(turno)
        //Cookies.set('usuario', JSON.stringify(usuario));
        //window.location.href = 'home'
@@ -97,7 +90,7 @@ export default function DateReservation() {
         <div>
             <Navbar></Navbar>
             <div class="h-screen max-w-full bg-[#303030] flex justify-around">
-                <div class=" pt-8 grid grid-cols-2 gap-x-14 " onChange={handleChange}>
+                <div class=" pt-8 grid grid-cols-2 gap-x-14 ">
                     <div class="colspan-1">
                         <div class="text-2xl font-1 text-white pb-10">
                             Seleccione una fecha y hora
@@ -116,7 +109,7 @@ export default function DateReservation() {
                             <div class="h-96 p-6 background rounded-xl overflow-y-scroll scroll-smooth">
                                 <div class="flex flex-col w-full">
                                     {updatedHourArray.map((updatedHour, index) => (
-                                        <Appointment key={index} hour={updatedHour} onChange={handleChange}/>
+                                        <Appointment key={index} hour={updatedHour}/>
                                     ))}
                                 </div>
                             </div>
@@ -125,7 +118,7 @@ export default function DateReservation() {
                                         class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                     Atrás
                                 </button>
-                                <button onClick={(e) => {handleSubmit(e)}}
+                                <button onClick={(e) => {e.preventDefault(); window.location.href = 'formulario'}}
                                         class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                     Siguiente
                                 </button>
