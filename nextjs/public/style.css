@@ -1,0 +1,113 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;  
+    flex-direction: column; 
+    background: #1E1F22; 
+    font-family: 'Noto Sans', sans-serif;
+    color: white;
+  }
+  
+  .nav{
+    height: 12%
+  }
+  
+  .main{
+    height: 85%; 
+    background: #303030;
+    font-size: 25px;
+  }
+  
+  .serch_dni{
+    display: flex;
+    margin-top: 30px; 
+  
+  }
+
+  textarea{
+    padding-top: 12px;
+    padding-left: 7px;
+    color: black
+    
+  }
+  
+  .serch_dni textarea{
+    width: 70%;  
+    height: 60px ; 
+    margin-right: 20px;
+    border-radius: 12px; 
+    resize: none;
+  }
+
+  textarea{
+    width: 100%;  
+    height: 60px ; 
+    margin-right: 20px;
+    border-radius: 12px; 
+    resize: none;
+  }
+  
+  .fild{
+    margin-top: 20px;
+    font-size: 20px;
+  }
+
+  .fild div{
+    width: 47%;
+  }
+  button{
+    width: 25%;  
+    height: 50px; 
+    margin-left: auto; 
+    background: #5865F2; 
+    color: white; 
+    font-size: 20px;
+    margin-top: 10px;
+    border-radius: 12px; 
+    border-width: 0;
+  }
+  
+  .list{
+    margin-top: 30px
+  }
+  
+  .recuest{
+    background: #424549; 
+    display: flex; 
+    border-radius: 12px; 
+    padding-top: 15px; 
+    padding-left: 40px;
+    margin-bottom: 15px;
+  }
+  
+  .data * {
+    margin: 0; 
+    margin-bottom: 10px
+  }
+  
+  .icons{
+    display: flex; 
+    float: right; 
+    padding-top: 15px;
+    margin-left: auto;
+    color: black;
+  }
+  
+  .icons * {
+    margin-right: 30px; 
+    height: 40px
+  }
+  
+  .butons{
+    margin-top: 30px;
+  }
+
+  .butons button{
+    margin-left: 30px;
+    float: right;
+  }
+  
+  .foot{
+    height: 3%;
+  }
