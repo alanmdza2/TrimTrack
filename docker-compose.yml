@@ -27,15 +27,15 @@ services:
      database:
        condition: service_healthy
  
- frontend:
-    container_name: frontend
-    image: frontend
-    build:
-      context: .
-      dockerfile: ./docker/nextjs.dockerfile
-    ports:
-      - 3000:3000 
-    volumes:
-      - ./nextjs/:/usr/src/app
-      - /usr/src/node_modules
-    command: npm run dev
+#  frontend:
+#     container_name: frontend
+#     image: frontend
+#     build:
+#       context: .
+#       dockerfile: ./docker/nextjs.dockerfile
+#     ports:
+#       - 3000:3000 
+#     volumes:
+#       - ./nextjs/:/usr/src/app
+#       - /usr/src/node_modules
+#     command: npm run dev
