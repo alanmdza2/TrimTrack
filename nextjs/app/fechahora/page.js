@@ -65,7 +65,7 @@ export default function DateReservation() {
         <div>
             <Navbar></Navbar>
             <div class="h-screen max-w-full bg-[#303030] flex justify-around">
-                <div class=" pt-8 grid grid-cols-2 content-center gap-x-14 ">
+                <div class=" pt-8 grid grid-cols-2 gap-x-14 ">
                     <div class="colspan-1">
                         <div class="text-2xl font-1 text-white pb-10">
                             Seleccione una fecha y hora

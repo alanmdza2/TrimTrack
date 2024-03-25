@@ -5,6 +5,23 @@ import Servicio from "./components/Servicio";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
+  const getServicio = async () => {
+    try {
+        const api = 'https://trimtrack-production.up.railway.app/api/servicio';
+        const data = await fetch(api, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        const res = await data.json();
+        console.log(res);
+        setData(res)
+    } catch (error) {
+        console.log(error.message);
+    }
+}
   return (  
     <>      <Navbar></Navbar>
         <div className='h-screen w-full bg-[#303030] flex justify-around'>
@@ -17,12 +34,6 @@ export default function Home() {
                         <div className='flex-col justify-center'>
                             <div >
                                 <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
-                            </div>
-                            <div >
-                                <Servicio legend={'Corte de Pelo + Barba'} price={'$4000'} time={'30 Minutos'} />
-                            </div>
-                            <div >
-                                <Servicio legend={'Color'} price={'$5500'} time={'60 Minutos'} />
                             </div>
                         </div>
                         <div className='grid grid-cols-2 gap-8 items-center'>
