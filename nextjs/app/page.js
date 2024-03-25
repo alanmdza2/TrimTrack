@@ -32,6 +32,7 @@ export default function Home() {
                 <div>
                     <form action="" className='w-full flex flex-col'>
                         <div className='flex-col justify-center'>
+                          
                             <div >
                                 <Servicio legend={'Corte de pelo'} price={'$3800'} time={'15 Minutos'} />
                             </div>

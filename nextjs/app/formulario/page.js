@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useEffect } from 'react';
+import Navbar from "../components/Navbar";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash,faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
@@ -43,7 +44,7 @@ export default function Formulario (){
     return(
         <form method="POST" onSubmit={handleSubmitUsuairo}>
         <body>
-        <div className="nav"></div>
+        <Navbar></Navbar>
     
         <div className="main">
             <div style={{width: "78%", margin: '0 auto',  marginTop: '10%'}}>
@@ -68,7 +69,8 @@ export default function Formulario (){
                     <p>Comentarios</p>
                     <textarea id="comentario" style={{height: "120px"}}></textarea>
                 </div>
-                <div className='fild' style={{textAlign: "center"}}>
+                <div className='fild' style={{display: "flex"}}>
+                    <input type="checkbox" name="" id="" style={{marginRight:"15px"}} />
                     <p>Estoy de acuerdo con las politicas reservadas</p>
                 </div>
                 <div className='butons'>
