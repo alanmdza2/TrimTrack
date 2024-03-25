@@ -1,10 +1,66 @@
 'use client'
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Calendar from "../components/Calendar";
 import Appointment from "../components/Appointment";
 
 export default function DateReservation() {
+    const [selectedDate, setSelectedDate] = useState(null);
+    const [availableAppointments, setAvailableAppointments] = useState([]);
+    const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI0NDExOTEyMyIsImlhdCI6MTcxMTM0ODA5NSwiZXhwIjoxNzExMzQ5NTM1fQ.8OV4d8gCS1vlW66SzMZTVMZg0VAMRXrDHuXymzyvG1A";
+   
+    useEffect(() => {
+        if (selectedDate) {
+            fetchAppointments(selectedDate);
+        }
+    }, [selectedDate]);
+
+    const fetchAppointments = (date) => {
+        const url = `https://trimtrack-production.up.railway.app/api/turno?fecha=${date}`;
+        console.log();
+        const requestOptions = {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }
+        };
+
+        fetch(url, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al obtener los turnos');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setAvailableAppointments(data);
+            })
+            .catch(error => {
+                console.error('Error al obtener los turnos:', error);
+            });
+    };
+
+    const handleDateSelect = (date) => {
+        date = `${date.$y}-${(date.$M) + 1}-${date.$D}` //armar el date
+        setSelectedDate(date);
+    };
+
+    function clearString(str) {
+        var eight = str.substring(11, 16);
+        return eight;
+    }
+
+    const generateHourArray = () => {
+        const startHour = 8;
+        const endHour = 16;
+        const hourArray = [];
+        for (let hour = startHour; hour <= endHour; hour++) {
+            const formattedHour = hour < 10 ? `0${hour}` : `${hour}`;
+            hourArray.push(`${formattedHour}:00`);
+        }
+        return hourArray;
+    };
+
+    const updatedHourArray = generateHourArray().filter(hour => !availableAppointments.some(appointment => clearString(appointment.fechahora) === hour));
+
     return (
         <div>
             <Navbar></Navbar>
@@ -16,7 +72,7 @@ export default function DateReservation() {
                         </div>
                         <div class="background p-7 rounded-xl">
                             <div class="calendar-background rounded-xl">
-                                <Calendar></Calendar>
+                                <Calendar onDateSelect={handleDateSelect} ></Calendar>
                             </div>
                         </div>
                         <div class="text-l font-1 text-white pt-7">
@@ -27,17 +83,9 @@ export default function DateReservation() {
                         <div class="pt-16">
                             <div class="h-96 p-6 background rounded-xl overflow-y-scroll scroll-smooth">
                                 <div class="flex flex-col w-full">
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
-                                    <Appointment></Appointment>
+                                    {updatedHourArray.map((updatedHour, index) => (
+                                        <Appointment key={index} hour={updatedHour} />
+                                    ))}
                                 </div>
                             </div>
                             <div class="grid grid-cols-2 gap-x-8 pt-8">
@@ -51,7 +99,6 @@ export default function DateReservation() {
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
