@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import Servicio from "./components/Servicio";
 import { token } from '../public/token'
 import Boton from "./components/Boton";
-import { useRouter } from "next/navigation";
 
 export default function Home() {
-    const router = useRouter();
     const [servivcio, setServicio] = useState([]);
     const getServicio = async () => {
         try {
             const api = 'https://trimtrack-production.up.railway.app/api/servicio';
+            //const api = process.env.API;
+            console.log(api);
             const data = await fetch(api, {
                 method: 'GET',
                 headers: {
@@ -28,9 +28,6 @@ export default function Home() {
     useEffect(() => {
         getServicio();
     }, [])
-
-
-
 
     return (
         <>

@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Calendar from "../components/Calendar";
 import Appointment from "../components/Appointment";
 import { token } from '../../public/token'
+import Boton from "../components/Boton";
 
 export default function DateReservation() {
     const [selectedDate, setSelectedDate] = useState(null);
@@ -117,10 +118,11 @@ export default function DateReservation() {
                                     class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                     Atrás
                                 </button>
-                                <button onClick={(e) => { e.preventDefault(); window.location.href = 'formulario' }}
+                                {/* <button onClick={(e) => { e.preventDefault(); window.location.href = 'formulario' }}
                                     class="colspan-1 bg-[#5865F2] hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl">
                                     Siguiente
-                                </button>
+                                </button> */}
+                                <Boton legend={'Siguiente'} ruta={'formulario'} />
                             </div>
                         </div>
                     </div>

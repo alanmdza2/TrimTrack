@@ -67,10 +67,10 @@ export default function Formulario() {
           </div>
           <div className='fild' style={{ display: "flex" }}>
             <input type="checkbox" name="" id="" style={{ marginRight: "15px" }} />
-            <p>Estoy de acuerdo con las politicas reservadas</p>
+            <p>Estoy de acuerdo con las politicas de reservas.</p>
           </div>
           <div className='butons'>
-            <Boton legend={'Finalizar'} onClick={(e) => {handleSubmit(e)}} />
+            <Boton legend={'Finalizar'} onClick={(e) => {handleSubmit(e)}} ruta={'/'} />
             <Boton legend={'Atras'} onClick={(e) => {handleSubmit(e)}} />
           </div>
         </div>
