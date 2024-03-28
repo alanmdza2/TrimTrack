@@ -2,11 +2,13 @@ import React from 'react'
 
 const page = () => {
   return (
-    <div>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, cupiditate cum vero, veniam expedita dignissimos excepturi autem accusamus odit illum saepe at deleniti eaque consequatur nobis fugit nulla quasi deserunt?</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, cupiditate cum vero, veniam expedita dignissimos excepturi autem accusamus odit illum saepe at deleniti eaque consequatur nobis fugit nulla quasi deserunt?</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, cupiditate cum vero, veniam expedita dignissimos excepturi autem accusamus odit illum saepe at deleniti eaque consequatur nobis fugit nulla quasi deserunt?</p>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestiae, cupiditate cum vero, veniam expedita dignissimos excepturi autem accusamus odit illum saepe at deleniti eaque consequatur nobis fugit nulla quasi deserunt?</p>
+    <div className='pl-10 bg-[#303030] w-screen h-screen'>
+        <ol type='1'>
+          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ex ad voluptatem esse odit repellendus facilis, blanditiis neque iure fuga autem amet officia, minus repellat beatae. Ullam quae non delectus.</li>
+          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ex ad voluptatem esse odit repellendus facilis, blanditiis neque iure fuga autem amet officia, minus repellat beatae. Ullam quae non delectus.</li>
+          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ex ad voluptatem esse odit repellendus facilis, blanditiis neque iure fuga autem amet officia, minus repellat beatae. Ullam quae non delectus.</li>
+          <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Reprehenderit ex ad voluptatem esse odit repellendus facilis, blanditiis neque iure fuga autem amet officia, minus repellat beatae. Ullam quae non delectus.</li>
+        </ol>
     </div>
   )
 }
